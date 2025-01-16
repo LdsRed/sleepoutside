@@ -18,12 +18,8 @@ export default class ProductListing{
     constructor(category, dataSource, listElement){
         this.category = category;
         this.dataSource = dataSource;
-
-        if ( listElement.contains('.')){
-        this.listElement = document.querySelector(`.${listElement}`);}
-        else{
-            this.listElement = document.getElementById(listElement);
-        }
+        this.listElement = document.querySelector(`${listElement}`);
+        
     }
 
     async init(){
