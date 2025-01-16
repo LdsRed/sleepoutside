@@ -31,12 +31,14 @@ constructor(productId, dataSource) {
     this.dataSource = dataSource;
 }
 
+
 async init(){
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails("main");
-    document
-    .getElementById('addToCart')
-    .addEventListener('click', () => this.addProductToCart(this.product));
+    // console.log('productDetails', this.product);
+    const addToCartButton = document.getElementById('addToCart');
+    // console.log('addToCartButton is present ',addToCartButton);
+    addToCartButton.addEventListener('click', () => this.addProductToCart(this.product));
 };
 
 
