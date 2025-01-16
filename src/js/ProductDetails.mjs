@@ -34,13 +34,20 @@ constructor(productId, dataSource) {
 async init(){
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails("main");
+    console.log(this.product);
+
+    const addToCartButton = document.getElementById('addToCart');
+
+    console.log(addToCartButton);
+
     document
     .getElementById('addToCart')
-    .addEventListener('click', () => this.addProductToCart.bind(this.product));
+    .addEventListener('click',this.addProductToCart.bind(this.product));
 };
 
 
 addProductToCart(product) {
+    console.log(product);
     let cartItems = getLocalStorage('so-cart') || [];
     cartItems.push(product);
     setLocalStorage('so-cart', cartItems);
@@ -48,7 +55,7 @@ addProductToCart(product) {
 
 renderProductDetails(selector){
 const element = document.querySelector(selector);
-console.log(selector);
+// console.log(selector);
 element.insertAdjacentHTML('afterBegin',productDetailsTemplate(this.product));
 
 };
