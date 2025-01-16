@@ -36,7 +36,7 @@ async init(){
     this.renderProductDetails("main");
     document
     .getElementById('addToCart')
-    .addEventListener('click', () => this.addProductToCart.bind(this.product));
+    .addEventListener('click', () => this.addProductToCart(this.product));
 };
 
 
