@@ -1,4 +1,8 @@
 import { getLocalStorage } from './utils.mjs';
+const xButton = document.querySelector('.x-remove-from-cart');
+
+xButton.addEventListener('click', removeFromCart);
+
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
@@ -9,7 +13,7 @@ function renderCartContents() {
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
-    <img
+    <div class=".x-remove-from-cart" data-id="${item.Id}">x</div><img
       src="${item.Image}"
       alt="${item.Name}"
     />
@@ -24,6 +28,10 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function removeFromCart(element) {
+console.log("remove from cart");
 }
 
 renderCartContents();
