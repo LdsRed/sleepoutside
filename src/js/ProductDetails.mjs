@@ -31,7 +31,6 @@ constructor(productId, dataSource) {
     this.dataSource = dataSource;
 }
 
-
 async init(){
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails("main");
@@ -43,6 +42,7 @@ async init(){
 
 
 addProductToCart(product) {
+    console.log(product);
     let cartItems = getLocalStorage('so-cart') || [];
     cartItems.push(product);
     setLocalStorage('so-cart', cartItems);
@@ -50,7 +50,7 @@ addProductToCart(product) {
 
 renderProductDetails(selector){
 const element = document.querySelector(selector);
-console.log(selector);
+// console.log(selector);
 element.insertAdjacentHTML('afterBegin',productDetailsTemplate(this.product));
 
 };
