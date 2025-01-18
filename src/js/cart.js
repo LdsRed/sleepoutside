@@ -4,6 +4,7 @@ import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 window.onload = () => {
   // console.log(document.querySelector('.product-list').innerHTML);
+
 //   const xButtons = document.querySelectorAll('.x-remove-from-cart');
 //   xButtons.forEach((button) => {
 //     console.log('button')
@@ -61,7 +62,7 @@ try {
 
 renderCartContents();
 
-// on page reload, render the cart
+
 
 
 
