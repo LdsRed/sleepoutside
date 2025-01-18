@@ -1,16 +1,21 @@
+// cart details and data
+
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 window.onload = () => {
   // console.log(document.querySelector('.product-list').innerHTML);
-  const xButtons = document.querySelectorAll('.x-remove-from-cart');
-  xButtons.forEach((button) => {
-    console.log('button')
-button.addEventListener('click', (event) => {
-  const itemId = event.target.dataset.id;
-  removeFromCart(itemId);
-})    
-  })
+
+//   const xButtons = document.querySelectorAll('.x-remove-from-cart');
+//   xButtons.forEach((button) => {
+//     console.log('button')
+// button.addEventListener('click', (event) => {
+//   console.log('click');
+//   const productId = event.target.dataset.id;
+//   removeFromCart(itemId);
+// } )    
+//   })
 }
+
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
@@ -20,7 +25,8 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
-  <div class="x-remove-from-cart" data-id="${item.Id}">x</div>
+<div class="x-remove-from-cart" data-id="${item.Id}">x</div>
+<div class="cart-card">
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -34,29 +40,40 @@ function cartItemTemplate(item) {
   <p class="cart-card__quantity">qty: 1</p>
   
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  </div>
 </li>`;
 
   return newItem;
 }
-
-
 
 function removeFromCart(itemId) {
   console.log(itemId);
   console.log(getLocalStorage('so-cart'));
   const newCartItems = getLocalStorage('so-cart').filter(item=> item.Id !== itemId);
   console.log('new Cart',newCartItems);
-// try {
+try {
   setLocalStorage('so-cart',newCartItems);
   renderCartContents();
-
-
-// } catch {
-//   throw error ("There was a problem removing the item from cart");
-// }
-  
-
-console.log('remove from cart');
+} catch {
+  throw error ("There was a problem removing the item from cart");
 }
+};
+
 
 renderCartContents();
+
+
+
+
+
+const xButtons = document.querySelectorAll('.x-remove-from-cart');
+xButtons.forEach((button) => {
+  console.log('button')
+button.addEventListener('click', (event) => {
+console.log('click');
+const itemId = event.target.dataset.id;
+removeFromCart(itemId);
+//reload the page to update the cart
+window.location.reload();
+} )    
+})
