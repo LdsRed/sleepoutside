@@ -173,6 +173,8 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+
+
 }
 
 .cart-card__image {
@@ -202,6 +204,14 @@ button {
   grid-column: 3;
 }
 
+.cart-card__remove_item {
+  font-size: 1em;
+  /* align right */
+  text-align: center;
+  grid-row: 1;
+  grid-column: 1/4;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -216,7 +226,10 @@ button {
   }
 }
 
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+
