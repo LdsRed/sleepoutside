@@ -8,7 +8,7 @@ window.onload = () => {
 button.addEventListener('click', (event) => {
   const itemId = event.target.dataset.id;
   removeFromCart(itemId);
-} )    
+})    
   })
 }
 
@@ -56,7 +56,7 @@ function removeFromCart(itemId) {
 // }
   
 
-console.log("remove from cart");
+console.log('remove from cart');
 }
 
 renderCartContents();
