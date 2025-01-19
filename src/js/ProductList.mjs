@@ -12,8 +12,6 @@ function productCardTemplate(product){
 }
 
 
-
-
 export default class ProductListing{
     constructor(category, dataSource, listElement){
         this.category = category;
@@ -47,3 +45,34 @@ export default class ProductListing{
     // };
 }
 
+//////////////////////////////// SORT PRODUCTS //////////////////////////////////
+
+// Selectors
+const sortSelect = document.getElementById('sort-options');
+const productList = document.querySelector('.product-list');
+
+// Sort products function
+function sortProducts(criteria) {
+  const products = Array.from(productList.children);
+
+  products.sort((a, b) => {
+    if (criteria === 'name') {
+      const nameA = a.querySelector('.card__name').textContent.trim();
+      const nameB = b.querySelector('.card__name').textContent.trim();
+      return nameA.localeCompare(nameB);
+    } else if (criteria === 'price') {
+      const priceA = parseFloat(a.querySelector('.product-card__price').textContent.replace('$', ''));
+      const priceB = parseFloat(b.querySelector('.product-card__price').textContent.replace('$', ''));
+      return priceA - priceB;
+    }
+  });
+
+  // Clear and re-render sorted products
+  productList.innerHTML = '';
+  products.forEach(product => productList.appendChild(product));
+}
+
+// Event Listener
+sortSelect.addEventListener('change', (event) => {
+  sortProducts(event.target.value);
+});

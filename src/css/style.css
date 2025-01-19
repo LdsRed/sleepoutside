@@ -96,6 +96,21 @@ button {
 }
 /* End utility classes */
 
+/* Sort Controls */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.sort-controls select {
+  padding: 5px;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
