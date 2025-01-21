@@ -63,9 +63,6 @@ try {
 renderCartContents();
 
 
-
-
-
 const xButtons = document.querySelectorAll('.x-remove-from-cart');
 xButtons.forEach((button) => {
   console.log('button')
