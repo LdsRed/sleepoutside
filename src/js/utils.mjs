@@ -34,3 +34,40 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   const htmlStrings = list.map((product)=> templateFn(product));
   parentElement.insertAdjacentHTML(position,htmlStrings.join(''));
 }
+
+
+export function renderWithTemplate(templateFn, parentElement, data, callback){
+
+  let template = templateFn
+  parentElement.insertAdjacentHTML('afterbegin',templateFn);
+  console.log('renderWithTemplate template', template);
+  if (callback) {
+    callback(data);
+  }
+
+}
+
+ export async function loadTemplate (path){
+const html = await fetch(path);
+const htmlResponse = await html.text();
+  return htmlResponse
+ }
+
+export async function loadHeaderFooter(path){  
+  // fetching the path of the html file
+  let footerTemplate = await loadTemplate('../public/partials/footer.html');
+ // console.log('footerTemplate ', footerTemplate);
+ let headTemplate =  await loadTemplate('../public/partials/header.html');
+ // console.log('headTemplate ', headTemplate);
+ 
+ let footerId = document.getElementById('footer');
+ let headerId = document.getElementById('header');
+ 
+ renderWithTemplate(footerTemplate,footerId);
+ renderWithTemplate(headTemplate,headerId);
+
+
+};
+
+
+
