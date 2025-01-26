@@ -1,8 +1,8 @@
-import {renderListWithTemplate} from './utils.mjs';
+import { renderListWithTemplate } from '/js/utils.mjs';
 
 function productCardTemplate(product){
     return `<li class="product-card">
-          <a href="product_pages/index.html?product=${product.Id}">
+          <a href="/product_pages/index.html?product=${product.Id}">
             <img src="${product.Image}" alt="Image of ${product.NameWithoutBrand} ">
             <h3 class="card__brand">${product.Brand.Name}</h3>
             <h2 class="card__name">${product.NameWithoutBrand}</h2>
@@ -18,19 +18,19 @@ export default class ProductListing{
     constructor(category, dataSource, listElement){
         this.category = category;
         this.dataSource = dataSource;
-        this.listElement = document.querySelector(`${listElement}`);
+        this.listElement = listElement;
         
     }
 
     async init(){
-        this.list = await this.dataSource.getData();
-        console.log(this.listElement);
-        renderListWithTemplate(productCardTemplate, this.listElement, this.productFilter(this.list));
+        const list = await this.dataSource.getData(this.category);
+        this.renderList(list);
+        document.querySelector('.title').innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1).toLowerCase();
     }
 
-    productFilter(list){
-        return list.filter((product)=> product.ListPrice != 179.99)
-    }
+    renderList(list) {
+        renderListWithTemplate(productCardTemplate, this.listElement, list);
+      }
 
     // renderList(list){
     //     const htmlStrings = list.map((product)=> productCardTemplate(product));
