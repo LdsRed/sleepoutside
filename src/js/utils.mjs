@@ -66,7 +66,7 @@ export async function loadHeaderFooter(path){
  
  renderWithTemplate(footerTemplate,footerId);
  renderWithTemplate(headTemplate,headerId);
- updateCartCount();
+updateCartCount();
 
 
 };

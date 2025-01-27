@@ -41,6 +41,7 @@ async init(){
     const addToCartButton = document.getElementById('addToCart');
     // console.log('addToCartButton is present ',addToCartButton);
     addToCartButton.addEventListener('click', () => this.addProductToCart(this.product));
+
 };
 
 

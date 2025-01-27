@@ -266,3 +266,22 @@ footer {
   text-wrap: wrap;
   
 }
+
+
+.disabled {
+  display: none;
+  }
+  
+  
+  #cartCount {
+    border-radius: 20px;
+    padding: 0.035em 0.28em;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    text-align: center;
+    font-size: 11px;
+    bottom: 35px;
+    right: -1px;
+  }
