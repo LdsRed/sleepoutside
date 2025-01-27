@@ -22,10 +22,11 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParams(param) {
+export function getParam(param) {
   const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const product = urlParams.get(param);
+console.log('param ', product);
 return product;
 }
 
@@ -40,7 +41,7 @@ export function renderWithTemplate(templateFn, parentElement, data, callback){
 
   let template = templateFn
   parentElement.insertAdjacentHTML('afterbegin',templateFn);
-  console.log('renderWithTemplate template', template);
+  // console.log('renderWithTemplate template', template);
   if (callback) {
     callback(data);
   }

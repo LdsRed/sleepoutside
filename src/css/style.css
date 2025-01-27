@@ -232,4 +232,37 @@ footer {
   padding: 1em;
 }
 
+.product-categories {
+  display: flex;
+  justify-content: center;
+}
 
+.product-categories ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+
+}
+
+.product-categories a, .product-categories img, .product-categories li {
+  cursor: pointer;
+  
+}
+
+.product-categories li {
+  margin: 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  
+  
+}
+
+.product-categories li > p {
+  text-wrap: wrap;
+  
+}
