@@ -66,9 +66,23 @@ export async function loadHeaderFooter(path){
  
  renderWithTemplate(footerTemplate,footerId);
  renderWithTemplate(headTemplate,headerId);
+ updateCartCount();
 
 
 };
 
+// updates the cart count when header/footer are rendered.
+export async function updateCartCount(){
+  let cartItemsCount = await getLocalStorage('so-cart').length;
+  console.log('cartItemsCount ', cartItemsCount);
+  let cartCount = document.getElementById('cartCount');
 
+  if (cartItemsCount){
+    cartCount.classList.remove('disabled');
+    cartCount.innerText = cartItemsCount;
+  } else {
+    cartCount.classList.add('disabled');
+  }
+
+}
 
