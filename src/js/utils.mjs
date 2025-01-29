@@ -22,10 +22,11 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener('click', callback);
 }
 
-export function getParams(param) {
+export function getParam(param) {
   const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const product = urlParams.get(param);
+console.log('param ', product);
 return product;
 }
 
@@ -39,8 +40,10 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 export function renderWithTemplate(templateFn, parentElement, data, callback){
 
   let template = templateFn
-  parentElement.insertAdjacentHTML('afterbegin', templateFn);
-  console.log('renderWithTemplate template', template);
+
+  parentElement.insertAdjacentHTML('afterbegin',templateFn);
+  // console.log('renderWithTemplate template', template);
+
   if (callback) {
     callback(data);
   }
@@ -59,15 +62,29 @@ export async function loadHeaderFooter(path){
  // console.log('footerTemplate ', footerTemplate);
  let headTemplate =  await loadTemplate('/partials/header.html');
  // console.log('headTemplate ', headTemplate);
- 
+ console.log("headerfooter template")
  let footerId = document.getElementById('footer');
  let headerId = document.getElementById('header');
  
  renderWithTemplate(footerTemplate,footerId);
  renderWithTemplate(headTemplate,headerId);
+// updateCartCount();
 
 
 };
 
+// updates the cart count when header/footer are rendered.
+export async function updateCartCount(){
+  let cartItemsCount = await getLocalStorage('so-cart').length;
+  console.log('cartItemsCount ', cartItemsCount);
+  let cartCount = document.getElementById('cartCount');
 
+  if (cartItemsCount){
+    cartCount.classList.remove('disabled');
+    cartCount.innerText = cartItemsCount;
+  } else {
+    cartCount.classList.add('disabled');
+  }
+
+}
 

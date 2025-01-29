@@ -1,11 +1,13 @@
-import { loadHeaderFooter, getParams } from './utils.mjs';
+
 import ProductData from './ProductData.mjs';
-import ProductListing from './ProductList.mjs';
+// renamed to ProductList to eliminate ambiguity from product-listing.js file
+import ProductList from './ProductList.mjs';
+import {getParam} from './utils.mjs';
 
-loadHeaderFooter();
-const category = getParams('category');
+const category = getParam('category');
+
 const dataSource = new ProductData();
-const element = document.querySelector('.product-list');
-const productListing = new ProductListing(category, dataSource, element);
 
-productListing.init();
+const productList = new ProductList(category, dataSource, '.product-list');
+productList.init();
+
