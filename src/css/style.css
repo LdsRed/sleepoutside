@@ -284,7 +284,20 @@ footer {
   cursor: pointer;
   text-decoration: none;
   
-  
+}
+
+/* remove hyperlink from anchor */
+.product-categories a {
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+
+.product-categories a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .product-categories li > p {
