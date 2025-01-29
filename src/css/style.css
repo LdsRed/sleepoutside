@@ -232,24 +232,24 @@ footer {
   padding: 1em;
 }
 
-.product-categories {
+.products {
   display: flex;
   justify-content: center;
 }
 
-.product-categories ul {
+.products ul {
   list-style-type: none;
   padding: 0;
   display: flex;
 
 }
 
-.product-categories a, .product-categories img, .product-categories li {
+.products a, .products img, .products li {
   cursor: pointer;
   
 }
 
-.product-categories li {
+.products li {
   margin: 0 1em;
   display: flex;
   flex-direction: column;
