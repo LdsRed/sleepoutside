@@ -60,13 +60,13 @@ export async function loadHeaderFooter(path){
  // console.log('footerTemplate ', footerTemplate);
  let headTemplate =  await loadTemplate('../public/partials/header.html');
  // console.log('headTemplate ', headTemplate);
- 
+ console.log("headerfooter template")
  let footerId = document.getElementById('footer');
  let headerId = document.getElementById('header');
  
  renderWithTemplate(footerTemplate,footerId);
  renderWithTemplate(headTemplate,headerId);
-updateCartCount();
+// updateCartCount();
 
 
 };

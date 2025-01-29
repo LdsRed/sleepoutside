@@ -24,14 +24,11 @@ export default class ProductListing{
 
     async init(){
         const list = await this.dataSource.getData(this.category);
-        // console.log('list', list); 
-        // console.log('list element ', this.listElement);
+        console.log('list', list); 
+        console.log('list element ', this.listElement);
         // renderWithTemplate(templateFunction, parentElement, data, callback)
         renderListWithTemplate(productCardTemplate, this.listElement, this.productFilter(list));
         document.querySelector(".title").innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1);
-        
-
-
     }
 
     productFilter(list){

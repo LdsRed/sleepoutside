@@ -46,7 +46,7 @@ async init(){
 
 
 addProductToCart(product) {
-    console.log(product);
+    console.log("Product Added ",product);
     let cartItems = getLocalStorage('so-cart') || [];
     cartItems.push(product);
     setLocalStorage('so-cart', cartItems);
