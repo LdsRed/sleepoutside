@@ -50,6 +50,8 @@ addProductToCart(product) {
     let cartItems = getLocalStorage('so-cart') || [];
     cartItems.push(product);
     setLocalStorage('so-cart', cartItems);
+    // added to reload page to update cart count
+    location.reload();
   }
 
 renderProductDetails(selector){

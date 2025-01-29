@@ -18,7 +18,7 @@ export default class ProductListing{
     constructor(category, dataSource, listElement){
         this.category = category;
         this.dataSource = dataSource;
-        this.listElement = listElement;
+        this.listElement = document.querySelector(listElement);
         
     }
 
@@ -26,7 +26,8 @@ export default class ProductListing{
     async init(){
         const list = await this.dataSource.getData(this.category);
         // renderWithTemplate(templateFunction, parentElement, data, callback)
-        renderListWithTemplate(productCardTemplate, this.listElement, this.productFilter(list));
+        
+        renderListWithTemplate(productCardTemplate, this.listElement, list);
         document.querySelector(".title").innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1);
 
         this.renderList(list);
