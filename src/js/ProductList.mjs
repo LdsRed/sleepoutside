@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from '/js/utils.mjs';
+import { renderListWithTemplate } from './utils.mjs';
 
 function productCardTemplate(product){
     return `<li class="product-card">
@@ -28,7 +28,7 @@ export default class ProductListing{
         // renderWithTemplate(templateFunction, parentElement, data, callback)
         
         renderListWithTemplate(productCardTemplate, this.listElement, list);
-        document.querySelector(".title").innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1);
+        document.querySelector('.title').innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1);
 
         this.renderList(list);
         document.querySelector('.title').innerHTML = this.category.charAt(0).toUpperCase() + this.category.slice(1).toLowerCase();

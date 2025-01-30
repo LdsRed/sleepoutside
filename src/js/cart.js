@@ -1,26 +1,24 @@
 // cart details and data
 
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 window.onload = () => {
   // console.log(document.querySelector('.product-list').innerHTML);
-
-//   const xButtons = document.querySelectorAll('.x-remove-from-cart');
-//   xButtons.forEach((button) => {
-//     console.log('button')
-// button.addEventListener('click', (event) => {
-//   console.log('click');
-//   const productId = event.target.dataset.id;
-//   removeFromCart(itemId);
-// } )    
-//   })
-}
-
+  //   const xButtons = document.querySelectorAll('.x-remove-from-cart');
+  //   xButtons.forEach((button) => {
+  //     console.log('button')
+  // button.addEventListener('click', (event) => {
+  //   console.log('click');
+  //   const productId = event.target.dataset.id;
+  //   removeFromCart(itemId);
+  // } )
+  //   })
+};
 
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart');
+  const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
 function cartItemTemplate(item) {
@@ -48,29 +46,29 @@ function cartItemTemplate(item) {
 
 function removeFromCart(itemId) {
   console.log(itemId);
-  console.log(getLocalStorage('so-cart'));
-  const newCartItems = getLocalStorage('so-cart').filter(item=> item.Id !== itemId);
-  console.log('new Cart',newCartItems);
-try {
-  setLocalStorage('so-cart',newCartItems);
-  renderCartContents();
-} catch {
-  throw error ("There was a problem removing the item from cart");
+  console.log(getLocalStorage("so-cart"));
+  const newCartItems = getLocalStorage("so-cart").filter(
+    (item) => item.Id !== itemId,
+  );
+  console.log("new Cart", newCartItems);
+  try {
+    setLocalStorage("so-cart", newCartItems);
+    renderCartContents();
+  } catch {
+    throw error("There was a problem removing the item from cart");
+  }
 }
-};
-
 
 renderCartContents();
 
-
-const xButtons = document.querySelectorAll('.x-remove-from-cart');
+const xButtons = document.querySelectorAll(".x-remove-from-cart");
 xButtons.forEach((button) => {
-  console.log('button')
-button.addEventListener('click', (event) => {
-console.log('click');
-const itemId = event.target.dataset.id;
-removeFromCart(itemId);
-//reload the page to update the cart
-window.location.reload();
-} )    
-})
+  console.log("button");
+  button.addEventListener("click", (event) => {
+    console.log("click");
+    const itemId = event.target.dataset.id;
+    removeFromCart(itemId);
+    //reload the page to update the cart
+    window.location.reload();
+  });
+});

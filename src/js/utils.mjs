@@ -24,10 +24,9 @@ export function setClick(selector, callback) {
 
 export function getParam(param) {
   const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const product = urlParams.get(param);
-console.log('param ', product);
-return product;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get(param);
+  return product;
 }
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = 'afterbegin', clear = false){
@@ -51,27 +50,26 @@ export function renderWithTemplate(templateFn, parentElement, data, callback){
 }
 
  export async function loadTemplate (path){
-const html = await fetch(path);
-const htmlResponse = await html.text();
-  return htmlResponse
+  const html = await fetch(path);
+   return await html.text()
  }
 
-export async function loadHeaderFooter(path){  
+export async function loadHeaderFooter(){
   // fetching the path of the html file
   let footerTemplate = await loadTemplate('/partials/footer.html');
  // console.log('footerTemplate ', footerTemplate);
  let headTemplate =  await loadTemplate('/partials/header.html');
  // console.log('headTemplate ', headTemplate);
- console.log("headerfooter template")
+
  let footerId = document.getElementById('footer');
  let headerId = document.getElementById('header');
  
  renderWithTemplate(footerTemplate,footerId);
  renderWithTemplate(headTemplate,headerId);
-updateCartCount();
+await updateCartCount();
 
 
-};
+}
 
 // updates the cart count when header/footer are rendered.
 export async function updateCartCount(){
