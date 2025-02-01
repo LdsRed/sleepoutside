@@ -30,6 +30,12 @@ header {
   justify-content: space-between;
   padding: 0 10px;
 }
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -85,7 +91,7 @@ button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
-  margin: auto;
+  margin: 1rem auto;
   display: block;
   border: 0;
   font-size: var(--large-font);
@@ -322,4 +328,22 @@ footer {
     font-size: 11px;
     bottom: 35px;
     right: -1px;
+  }
+
+  /* Checkout page styles */
+  fieldset {
+    border: 1px solid var(--light-grey);
+    padding: 1em;
+    margin: 1em 6em;
+    width: 100%;
+  }
+  
+  .checkout-form {
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    display: block;
+    margin: 0;
   }
