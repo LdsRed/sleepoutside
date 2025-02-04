@@ -16,6 +16,8 @@ export default class CheckoutProcess {
         this.calculateItemSummary();
     }
 
+
+
     calculateItemSummary() {
         this.itemTotal = this.list.reduce((total, item) => total + item.price, 0);
         this.shipping = this.itemTotal > 100 ? 0 : 10;
@@ -34,6 +36,12 @@ export default class CheckoutProcess {
         document.querySelector('.tax').textContent = `$${this.tax.toFixed(2)}`;
         document.querySelector('.order-total').textContent = `$${this.orderTotal.toFixed(2)}`;
     }
+
+    // takes the items currently stored in the cart (localstorage) and returns them in a simplified form.
+packageItems(items) {
+    // convert the list of products from localStorage to the simpler form required for the checkout process. Array.map would be perfect for this.
+  
+  }
 
 
 }

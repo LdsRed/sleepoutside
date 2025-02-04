@@ -1,7 +1,7 @@
 import ExternalServices from './ExternalServices.mjs';
 // renamed to ProductList to eliminate ambiguity from product-listing.js file
 import ProductList from './ProductList.mjs';
-import {getParam} from './utils.mjs';
+import {getParam, qs} from './utils.mjs';
 
 const category = getParam('category');
 
