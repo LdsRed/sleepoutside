@@ -347,3 +347,34 @@ footer {
     display: block;
     margin: 0;
   }
+
+.product__colors h3 {
+
+}
+
+#imageSwatches {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+  div.imageSwatch {
+  max-width: 100px;
+  padding: 0.5em;
+  width: 50px;
+  height: 75px;
+  }
+
+  .imageSwatch img{
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .imageSwatch:hover, .imageSwatch:has(img.selected) {
+    border: 1px solid var(--primary-color);
+    padding: 0.4em;
+    cursor: pointer;
+
+  }
+

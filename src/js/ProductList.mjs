@@ -13,13 +13,11 @@ function productCardTemplate(product){
 }
 
 
-
 export default class ProductListing{
     constructor(category, dataSource, listElement){
         this.category = category;
         this.dataSource = dataSource;
         this.listElement = document.querySelector(listElement);
-        
     }
 
 
