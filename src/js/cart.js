@@ -49,7 +49,7 @@ function cartItemTemplate(item) {
 function removeFromCart(itemId) {
   console.log(itemId);
   console.log(getLocalStorage('so-cart'));
-  const newCartItems = getLocalStorage('so-cart').filter(item=> item.Id !== itemId);
+  const newCartItems = getLocalStorage('so-cart').filter(item=> parseInt(item.Id) !== parseInt(itemId));
   console.log('new Cart',newCartItems);
 try {
   setLocalStorage('so-cart',newCartItems);
@@ -61,6 +61,9 @@ try {
 
 
 renderCartContents();
+
+
+
 
 
 const xButtons = document.querySelectorAll('.x-remove-from-cart');

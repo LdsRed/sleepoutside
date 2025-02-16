@@ -37,6 +37,7 @@ constructor(productId, dataSource) {
     this.preppedProduct = {};
     this.dataSource = dataSource;
     this.selectedColorId = null;
+
     // this.imageSwatches = document.querySelector('#imageSwatches').addEventListener('click', (e) => {});
 }
 
@@ -45,6 +46,7 @@ async init(){
     this.product = await this.dataSource.findProductById(this.productId);
   
     console.log('product', this.product);
+    this.selectedColorId = this.product.Colors[0].ColorCode;
     this.imageSwatches = this.product.Colors.map((color,index) => `<div class="imageSwatch"><img src="${color.ColorPreviewImageSrc}" data-id="${color.ColorCode}" alt="${color.ColorName}" title="${color.ColorName}" class="${index === 0 ? 'selected' : null}" width=25 height=25></div>`).join('');
     // console.log('images',images);
     this.renderProductDetails("main");
@@ -86,11 +88,17 @@ addProductToCart(product) {
         return parseInt(color.ColorCode) === parseInt(this.selectedColorId)
       })];
 
-      console.log('preppedProduct', this.preppedProduct);
+    // set image for cart preview
+    this.preppedProduct.Images.PrimarySmall = this.preppedProduct.Colors[0].ColorPreviewImageSrc;
+    this.preppedProduct.Images.PrimaryMedium = this.preppedProduct.Colors[0].ColorPreviewImageSrc;
+    this.preppedProduct.Images.PrimaryLarge = this.preppedProduct.Colors[0].ColorPreviewImageSrc;
+
+
+    console.log('preppedProduct', this.preppedProduct);
     cartItems.push(this.preppedProduct);
     setLocalStorage('so-cart', cartItems);
     // added to reload page to update cart count
-    // location.reload();
+    location.reload();
   }
 
 
