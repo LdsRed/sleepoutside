@@ -43,7 +43,7 @@ constructor(productId, dataSource) {
 async init(){
     // console.log('productId', this.productId);
     this.product = await this.dataSource.findProductById(this.productId);
-    
+  
     console.log('product', this.product);
     this.imageSwatches = this.product.Colors.map((color,index) => `<div class="imageSwatch"><img src="${color.ColorPreviewImageSrc}" data-id="${color.ColorCode}" alt="${color.ColorName}" title="${color.ColorName}" class="${index === 0 ? 'selected' : null}" width=25 height=25></div>`).join('');
     // console.log('images',images);
@@ -71,6 +71,7 @@ handleSwatchClick(event) {
       swatch.classList.remove('selected');
     });}
     event.target.classList.add('selected');
+
     // console.log('selectedColorId', this.selectedColorId);
 }
 
@@ -79,7 +80,7 @@ addProductToCart(product) {
     let cartItems = getLocalStorage('so-cart') || [];
     this.preppedProduct = {...product};
 
-    const selectedColor = this.preppedProduct.Colors.find(color => parseInt(color.ColorCode) === parseInt(this.selectedColorId));
+    // const selectedColor = this.preppedProduct.Colors.find(color => parseInt(color.ColorCode) === parseInt(this.selectedColorId));
     // console.log('selectedColor: ',selectedColor);
       this.preppedProduct.Colors = [this.preppedProduct.Colors.find(color => {
         return parseInt(color.ColorCode) === parseInt(this.selectedColorId)
